@@ -1,0 +1,16 @@
+; Set LED to light up
+	.text
+mov r0,#3
+
+loop: swi 0x201
+;to light upp led, r0 = 1 means right led up
+;r0 = 2 means left led and r0= 3 means both led light up
+
+add r0,r0,#1
+	mov r4,#0x84000
+	delay: sub r4,r4,r1
+		cmp r4,#0
+	bne delay
+cmp r0,#3
+ble loop 
+.end
